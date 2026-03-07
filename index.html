@@ -1,0 +1,45 @@
+code
+Html
+<style>
+  /* This makes the background cover the entire screen */
+  #cmykw-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* Keeps it behind your Squarespace content */
+    transition: background-color 0.8s ease-in-out;
+  }
+</style>
+
+<div id="cmykw-background"></div>
+
+<script>
+  (function() {
+    const bg = document.getElementById('cmykw-background');
+    const colors = [
+      { hex: "#00FFFF", duration: 7000 }, // Cyan
+      { hex: "#FF00FF", duration: 2000 }, // Magenta
+      { hex: "#FFFF00", duration: 2000 }, // Yellow
+      { hex: "#000000", duration: 2000 }, // Black
+      { hex: "#FFFFFF", duration: 2000 }  // White
+    ];
+    
+    let currentIndex = 0;
+
+    function rotateColor() {
+      const currentColor = colors[currentIndex];
+      bg.style.backgroundColor = currentColor.hex;
+      
+      // Move to next color
+      currentIndex = (currentIndex + 1) % colors.length;
+      
+      // Schedule next change based on current color's duration
+      setTimeout(rotateColor, currentColor.duration);
+    }
+
+    // Start the loop
+    rotateColor();
+  })();
+</script>
