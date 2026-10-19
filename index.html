@@ -1,61 +1,891 @@
-<style>
-  #cmyk-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    background-color: #FFFFFF; /* The transition color */
-  }
-  .color-layer {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.05s linear; /* Updated to 0.05s flash */
-  }
-  .color-layer.active {
-    opacity: 1;
-  }
-</style>
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth scroll-pt-14">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyanCollective.ai | Enterprise AI & PE Value Creation Advisory</title>
+  <meta name="description" content="Precision Value Creation for Enterprise Portfolios and Private Equity Assets. Led by Lee Powell, CPTO & PE Value Creation Advisor.">
 
-<div id="cmyk-background">
-  <div id="layer-cyan" class="color-layer" style="background-color: #00FFFF;"></div>
-  <div id="layer-magenta" class="color-layer" style="background-color: #FF00FF;"></div>
-  <div id="layer-yellow" class="color-layer" style="background-color: #FFFF00;"></div>
-  <div id="layer-black" class="color-layer" style="background-color: #000000;"></div>
-</div>
+  <!-- Inter & Plus Jakarta Sans Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
-<script>
-  (function() {
-    const layers = [
-      { id: 'layer-cyan', duration: 2000 },    /* Updated to 2000ms */
-      { id: 'layer-magenta', duration: 2000 },
-      { id: 'layer-yellow', duration: 2000 },
-      { id: 'layer-black', duration: 2000 }
-    ];
-    
-    let currentIndex = 0;
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              obsidian: '#05070d',
+              surface: '#0b111e',
+              card: 'rgba(15, 23, 42, 0.65)',
+              border: 'rgba(56, 189, 248, 0.15)',
+              cyan: '#00f2fe',
+              electric: '#0ea5e9',
+              accent: '#38bdf8'
+            }
+          },
+          backgroundImage: {
+            'cyan-gradient': 'linear-gradient(135deg, #00f2fe 0%, #0ea5e9 100%)',
+            'radial-glow': 'radial-gradient(circle at 50% 0%, rgba(0, 242, 254, 0.12) 0%, transparent 65%)'
+          }
+        }
+      }
+    }
+  </script>
 
-    function rotateColor() {
-      // Hide all layers to reveal the white background
-      layers.forEach(l => document.getElementById(l.id).classList.remove('active'));
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom Glow & Glassmorphism Utilities */
+    .glass-panel {
+      background: rgba(11, 17, 30, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(56, 189, 248, 0.16);
+    }
+    .glass-panel:hover {
+      border-color: rgba(0, 242, 254, 0.35);
+    }
+    .text-glow {
+      text-shadow: 0 0 24px rgba(0, 242, 254, 0.35);
+    }
+    .glow-cyan-box {
+      box-shadow: 0 0 30px -8px rgba(0, 242, 254, 0.2);
+    }
+    /* Subtle Grid Background */
+    .bg-grid-pattern {
+      background-size: 40px 40px;
+      background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    }
+  </style>
+</head>
+
+<body class="bg-brand-obsidian text-slate-100 font-sans antialiased selection:bg-brand-cyan selection:text-brand-obsidian relative overflow-x-hidden min-h-screen">
+
+  <!-- Ambient Backdrop Glows -->
+  <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] bg-radial-glow pointer-events-none z-0"></div>
+  <div class="fixed inset-0 bg-grid-pattern opacity-60 pointer-events-none z-0"></div>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="sticky top-0 z-50 glass-panel border-b border-brand-border/60 bg-brand-obsidian/80">
+    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <!-- Brand Logo -->
+      <a href="#" class="flex items-center gap-3 group">
+        <div>
+          <span class="text-xl font-bold tracking-tight text-white flex items-center gap-1">
+            CyanCollective.ai
+          </span>
+          <span class="block text-[11px] font-mono tracking-widest uppercase text-slate-300">Value Creation Advisory</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-300">
+        <a href="#metrics" class="hover:text-brand-cyan transition-colors">Outcomes</a>
+        <a href="#offerings" class="hover:text-brand-cyan transition-colors">Capabilities</a>
+        <a href="#sectors" class="hover:text-brand-cyan transition-colors">Sectors</a>
+        <a href="#models" class="hover:text-brand-cyan transition-colors">Engagement Models</a>
+        <a href="#process" class="hover:text-brand-cyan transition-colors">Value Engine</a>
+      </div>
+
+      <!-- Action Button -->
+      <div class="flex items-center gap-4">
+        <button onclick="openModal()" class="relative group px-5 py-2.5 rounded-lg font-semibold text-xs uppercase tracking-wider text-brand-obsidian bg-brand-cyan hover:bg-white transition-all shadow-[0_0_20px_rgba(0,242,254,0.3)] hover:shadow-[0_0_30px_rgba(0,242,254,0.5)]">
+          Request a Consult
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="relative z-10">
+
+    <!-- HERO SECTION -->
+    <section class="pt-24 pb-20 px-6 max-w-7xl mx-auto text-center md:text-left">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <div class="lg:col-span-8 space-y-6">
+          <!-- Executive Badge -->
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-brand-cyan/30 bg-brand-cyan/5 text-xs font-mono uppercase tracking-widest text-brand-cyan">
+            <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
+            PE Portfolio Advisory & Enterprise AI Architecture
+          </div>
+
+          <!-- Main Title -->
+          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-[1.08]">
+            Accelerating Value Creation <span class="bg-gradient-to-r from-white via-slate-200 to-brand-cyan bg-clip-text text-transparent text-glow">for Private Equity Portfolios &amp; Growth</span> Focused Companies.
+          </h1>
+
+          <!-- Value Prop Paragraph -->
+          <p class="text-lg sm:text-xl text-slate-300 max-w-3xl font-normal leading-relaxed">
+           CyanCollective, led by Lee Powell, is your executive partner for optimizing human capital, eliminating organizational drag, and driving rapid value creation at scale.
+          </p>
+
+          <!-- Primary CTAs -->
+          <div class="pt-4 flex flex-col sm:flex-row items-center gap-4">
+            <button onclick="openModal()" class="w-full sm:w-auto px-8 py-4 rounded-xl font-bold text-sm tracking-wide text-brand-obsidian bg-brand-cyan hover:bg-white transition-all duration-300 shadow-[0_0_35px_rgba(0,242,254,0.35)] flex items-center justify-center gap-2">
+              <span>Book a Value Creation Audit</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+            <a href="#models" class="w-full sm:w-auto px-7 py-4 rounded-xl font-semibold text-sm text-slate-300 border border-slate-700/80 hover:border-brand-cyan/50 hover:bg-slate-900/60 transition-all flex items-center justify-center gap-2">
+              <span>Review Engagement Models</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Advisor Profile Card -->
+        <div class="lg:col-span-4">
+          <div class="glass-panel p-6 rounded-2xl border border-brand-border relative overflow-hidden glow-cyan-box">
+            <div class="absolute -right-12 -top-12 w-40 h-40 bg-brand-cyan/10 rounded-full blur-2xl"></div>
+            
+            <div class="flex items-center gap-4 mb-5">
+              <div class="w-14 h-14 rounded-full bg-slate-800 border-2 border-brand-cyan/60 flex items-center justify-center text-brand-cyan font-mono font-bold text-xl">
+                LP
+              </div>
+              <div>
+                <h3 class="font-bold text-lg text-white">Lee Powell</h3>
+                <p class="text-xs font-mono text-brand-cyan tracking-wide">CPTO & PE Value Creation Advisor</p>
+                <p class="text-[11px] text-slate-400">Founder, CyanCollective.ai</p>
+              </div>
+            </div>
+
+            <div class="space-y-3 pt-2 text-xs border-t border-slate-800">
+              <div class="flex justify-between items-center text-slate-300">
+                <span class="text-slate-400">Strategic Alignment:</span>
+                <span class="font-semibold text-slate-200">Tech & Product Leadership</span>
+              </div>
+              <div class="flex justify-between items-center text-slate-300">
+                <span class="text-slate-400">Target Hold Cycle:</span>
+                <span class="font-semibold text-slate-200">Pre-Close to Exit Realization</span>
+              </div>
+              <div class="flex justify-between items-center text-slate-300">
+                <span class="text-slate-400">Focus:</span>
+                <span class="font-semibold text-slate-200">EBITDA & Enterprise AI OS</span>
+              </div>
+            </div>
+
+            <div class="mt-5 p-3 rounded-lg bg-slate-950/70 border border-slate-800/80 text-[13px] text-slate-400 leading-relaxed font-mono">
+              "We compress 3-year AI roadmap cycles into 30, 60, 90-day quantifiable EBITDA inflection points."
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CORE IMPACT METRICS SECTION -->
+    <section id="metrics" class="py-16 border-y border-brand-border/40 bg-brand-surface/40">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="mb-10 text-center md:text-left">
+          <p class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Quantified Institutional Track Record</p>
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mt-1">Proven Financial and Operational Performance</h2>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Metric Card 1 -->
+          <div class="glass-panel p-8 rounded-2xl border border-brand-border/60 relative group hover:border-brand-cyan/60 transition-all">
+            <div class="text-xs font-mono uppercase text-brand-cyan tracking-wider mb-2">Market Outperformance</div>
+            <div class="text-4xl lg:text-5xl font-black text-white tracking-tight flex items-baseline gap-1">
+              +2.0% <span class="text-sm font-semibold text-brand-accent">Alpha</span>
+            </div>
+            <div class="mt-4 text-sm font-semibold text-slate-200">
+              Multi-Billion-Dollar Enterprise Vertical Leadership
+            </div>
+            <p class="mt-2 text-xs text-slate-400 leading-relaxed">
+              Maintained resilient margin expansion and outperformed broader market benchmarks by +200 bps during sector-wide downturns.
+            </p>
+          </div>
+
+          <!-- Metric Card 2 -->
+          <div class="glass-panel p-8 rounded-2xl border border-brand-border/60 relative group hover:border-brand-cyan/60 transition-all">
+            <div class="text-xs font-mono uppercase text-brand-cyan tracking-wider mb-2">Net-New Revenue & Efficiency</div>
+            <div class="text-4xl lg:text-5xl font-black text-white tracking-tight flex items-baseline gap-1">
+              $100M+ <span class="text-sm font-semibold text-brand-accent">9-Figure</span>
+            </div>
+            <div class="mt-4 text-sm font-semibold text-slate-200">
+              Enterprise AI & Platform Monetization
+            </div>
+            <p class="mt-2 text-xs text-slate-400 leading-relaxed">
+              Systematically unlocked net-new software revenue and structural cost efficiency via production RAG systems and autonomous workflow architectures.
+            </p>
+          </div>
+
+          <!-- Metric Card 3 -->
+          <div class="glass-panel p-8 rounded-2xl border border-brand-border/60 relative group hover:border-brand-cyan/60 transition-all">
+            <div class="text-xs font-mono uppercase text-brand-cyan tracking-wider mb-2">Commercial Traction</div>
+            <div class="text-4xl lg:text-5xl font-black text-white tracking-tight flex items-baseline gap-1">
+              $10M+ <span class="text-sm font-semibold text-brand-accent">8-Figure ACV</span>
+            </div>
+            <div class="mt-4 text-sm font-semibold text-slate-200">
+              Secured Across Fortune 500 & PE Accounts
+            </div>
+            <p class="mt-2 text-xs text-slate-400 leading-relaxed">
+              Led technical and commercial architecture negotiations closing multi-million recurring contracts with Tier-1 enterprise buyers.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CAPABILITIES SECTION -->
+    <section id="offerings" class="py-24 max-w-7xl mx-auto px-6">
+      <div class="max-w-2xl mb-16">
+        <p class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Core Advisory Pillars</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Strategic Value Creation Pillars</h2>
+        <p class="text-slate-400 text-sm mt-3">Targeted technical solutions calibrated across the private equity lifecycle—aligning human capital, eliminating technical debt, and deploying enterprise AI as a force multiplier for rapid EBITDA expansion.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- Offering 1 -->
+        <div class="glass-panel rounded-2xl p-8 border border-brand-border/60 flex flex-col justify-between hover:border-brand-cyan/50 transition-all">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan mb-6">
+              <i data-lucide="search-check" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Technical Due Diligence & Gap Analysis</h3>
+            <p class="text-xs font-mono text-brand-accent mb-4 tracking-wide uppercase">Pre & Post-Acquisition Scrutiny</p>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              Rigorous, non-generic architectural assessment of target codebases, infrastructure liabilities, technical debt, and proprietary moat defenses before capital deployment.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-400 font-mono">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-cyan shrink-0"></i>
+                Technical Debt & Security Exposure Scoring
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-cyan shrink-0"></i>
+                Software IP & Architecture Verifications
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-cyan shrink-0"></i>
+                Post-Close Day-100 Remediation Matrix
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-800">
+            <span class="text-xs text-slate-400 font-mono">Deliverable: Investment Committee Grade Risk & Upside Dossier</span>
+          </div>
+        </div>
+
+        <!-- Offering 2 -->
+        <div class="glass-panel rounded-2xl p-8 border border-brand-cyan/30 bg-slate-900/40 flex flex-col justify-between hover:border-brand-cyan transition-all relative">
+          <div class="absolute -top-3 right-6 bg-brand-cyan text-brand-obsidian text-[10px] font-mono font-extrabold uppercase px-3 py-1 rounded-full">
+            High Multiplier
+          </div>
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/40 flex items-center justify-center text-brand-cyan mb-6">
+              <i data-lucide="cpu" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Enterprise AI & RAG Architecture</h3>
+            <p class="text-xs font-mono text-brand-accent mb-4 tracking-wide uppercase">Scalable AI Operating Systems</p>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              Transitioning pilot experiments into secure, scalable retrieval-augmented generation (RAG) platforms and autonomous agent workflows embedded directly into revenue streams.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-400 font-mono">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-cyan shrink-0"></i>
+                Production RAG & Vector Pipeline Setup
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-cyan shrink-0"></i>
+                Enterprise Guardrails, PII & Governance
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-cyan shrink-0"></i>
+                Core Tech Stack AI Augmentation
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-800">
+            <span class="text-xs text-slate-400 font-mono">Deliverable: Production AI Infrastructure & Governance Engine</span>
+          </div>
+        </div>
+
+        <!-- Offering 3 -->
+        <div class="glass-panel rounded-2xl p-8 border border-brand-border/60 flex flex-col justify-between hover:border-brand-cyan/50 transition-all">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan mb-6">
+              <i data-lucide="trending-up" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-2">Performance Planning & KPI Playbooks</h3>
+            <p class="text-xs font-mono text-brand-accent mb-4 tracking-wide uppercase">Value Creation Blueprint</p>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              Engineering clarity across engineering velocity, operational margin enhancement, and product monetization. Aligning CPTO/CIO execution with sponsor return profiles.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-400 font-mono">
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-cyan shrink-0"></i>
+                Executive KPI Workshops & Dashboards
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-cyan shrink-0"></i>
+                COGS Compression & Infra Cost Arbitrage
+              </li>
+              <li class="flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-brand-cyan shrink-0"></i>
+                Hold-Period Operational Milestones
+              </li>
+            </ul>
+          </div>
+          <div class="mt-8 pt-4 border-t border-slate-800">
+            <span class="text-xs text-slate-400 font-mono">Deliverable: 180-Day Value Creation Blueprint & Scorecard</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+      <!-- DOMAINS & VERTICALS SECTION -->
+<section id="sectors" class="py-20 border-t border-brand-border/40 bg-brand-obsidian relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       
-      // Wait 50ms for the "flash" to white
-      setTimeout(() => {
-        const current = layers[currentIndex];
-        document.getElementById(current.id).classList.add('active');
-        
-        currentIndex = (currentIndex + 1) % layers.length;
-        
-        // Schedule next rotation
-        setTimeout(rotateColor, current.duration);
-      }, 50); // Matches the 0.05s transition
+      <!-- Left Column: Transformation Domains -->
+      <div class="lg:col-span-6 space-y-6">
+        <div>
+          <p class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Functional Capabilities</p>
+          <h2 class="text-3xl font-bold text-white mt-2">Successfully Delivering Transformation &amp; Innovation for Decades Across:</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-4 pt-2">
+          <div class="p-4 rounded-xl glass-panel border border-brand-border/60 flex items-center gap-3">
+            <i data-lucide="megaphone" class="w-5 h-5 text-brand-cyan shrink-0"></i>
+            <span class="text-sm font-semibold text-slate-200">Marketing &amp; AdTech</span>
+          </div>
+          <div class="p-4 rounded-xl glass-panel border border-brand-border/60 flex items-center gap-3">
+            <i data-lucide="tv-2" class="w-5 h-5 text-brand-cyan shrink-0"></i>
+            <span class="text-sm font-semibold text-slate-200">Media &amp; DSP</span>
+          </div>
+          <div class="p-4 rounded-xl glass-panel border border-brand-border/60 flex items-center gap-3">
+            <i data-lucide="shield-check" class="w-5 h-5 text-brand-cyan shrink-0"></i>
+            <span class="text-sm font-semibold text-slate-200">Tech, IT &amp; Cyber</span>
+          </div>
+          <div class="p-4 rounded-xl glass-panel border border-brand-border/60 flex items-center gap-3">
+            <i data-lucide="database" class="w-5 h-5 text-brand-cyan shrink-0"></i>
+            <span class="text-sm font-semibold text-slate-200">Data Science &amp; AI</span>
+          </div>
+          <div class="p-4 rounded-xl glass-panel border border-brand-border/60 flex items-center gap-3">
+            <i data-lucide="user" class="w-5 h-5 text-brand-cyan shrink-0"></i>
+            <span class="text-sm font-semibold text-slate-200">Audience Segmentation</span>
+          </div>  
+          <div class="p-4 rounded-xl glass-panel border border-brand-border/60 flex items-center gap-3">
+            <i data-lucide="search" class="w-5 h-5 text-brand-cyan shrink-0"></i>
+            <span class="text-sm font-semibold text-slate-200">Market Research</span>
+          </div>    
+          <div class="p-4 rounded-xl glass-panel border border-brand-border/60 flex items-center gap-3">
+            <i data-lucide="sparkles" class="w-5 h-5 text-brand-cyan shrink-0"></i>
+            <span class="text-sm font-semibold text-slate-200">Creative Content</span>
+          </div>     
+          <div class="p-4 rounded-xl glass-panel border border-brand-border/60 flex items-center gap-3">
+            <i data-lucide="box" class="w-5 h-5 text-brand-cyan shrink-0"></i>
+            <span class="text-sm font-semibold text-slate-200">Product Development</span>
+          </div>   
+        </div>
+      </div>
+
+      <!-- Right Column: Experienced Industry Verticals -->
+      <div class="lg:col-span-6 space-y-6">
+        <div>
+          <p class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Sector Depth</p>
+          <h2 class="text-3xl font-bold text-white mt-2">Experienced Industry Verticals</h2>
+        </div>
+        <div class="grid grid-cols-2 gap-4 pt-2">
+          <div class="p-4 rounded-xl glass-panel border border-brand-border/60">
+            <div class="text-xs font-mono text-brand-accent uppercase mb-1">Deep Expertise</div>
+            <div class="text-base font-bold text-white">Healthcare &amp; Life Sciences</div>
+            <p class="text-xs text-slate-400 mt-1">MLR compliance, ISO certification, pharma MarTech, patient access platforms.</p>
+          </div>
+          <div class="p-4 rounded-xl glass-panel border border-brand-border/60">
+            <div class="text-xs font-mono text-brand-accent uppercase mb-1">Domain Focus</div>
+            <div class="text-base font-bold text-white">Energy</div>
+            <p class="text-xs text-slate-400 mt-1">Data infrastructure modernization, operational efficiency, and platform consolidation.</p>
+          </div>
+          <div class="p-4 rounded-xl glass-panel border border-brand-border/60">
+            <div class="text-xs font-mono text-brand-accent uppercase mb-1">Domain Focus</div>
+            <div class="text-base font-bold text-white">Waste Management</div>
+            <p class="text-xs text-slate-400 mt-1">Logistics, product migrations, route optimization analytics, and core tech integration.</p>
+          </div>
+          <div class="p-4 rounded-xl glass-panel border border-brand-border/60">
+            <div class="text-xs font-mono text-brand-accent uppercase mb-1">Domain Focus</div>
+            <div class="text-base font-bold text-white">Automotive</div>
+            <p class="text-xs text-slate-400 mt-1">Performance tracking, customer experience, and connected platforms.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+      
+    <!-- FLEXIBLE ENGAGEMENT MODELS -->
+    <section id="models" class="py-20 bg-brand-surface/50 border-t border-brand-border/40">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <p class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Engagement Architecture</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Flexible Models Tailored to Retaining Portfolio Velocity while we work.</h2>
+          <p class="text-slate-400 text-sm mt-3">From high-velocity strategic guidance to hands-on embedded executive leadership. We prioritize keeping your racecar(s) out on the track.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          
+          <!-- Model 1: Advisor -->
+          <div class="glass-panel p-8 rounded-2xl border border-brand-border/60 flex flex-col justify-between hover:border-brand-accent transition-all">
+            <div>
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold text-white">Advisor</h3>
+                <span class="text-lg font-mono font-bold text-brand-cyan tracking-wider">$</span>
+              </div>
+              <p class="text-xs text-slate-400 mb-6 font-mono uppercase">Strategic Oversight & Sounding Board</p>
+              
+              <div class="space-y-4 mb-8">
+                <div>
+                  <div class="text-xs font-mono text-slate-400 uppercase">Scope</div>
+                  <div class="text-sm text-slate-200 mt-1 font-medium">Board advisory, quarterly architectural reviews, rapid due diligence audits, and executive alignment.</div>
+                </div>
+                <div>
+                  <div class="text-xs font-mono text-slate-400 uppercase">Velocity</div>
+                  <div class="text-sm font-mono text-brand-cyan mt-1">Days</div>
+                </div>
+                <div>
+                  <div class="text-xs font-mono text-slate-400 uppercase">Ideal For</div>
+                  <div class="text-xs text-slate-300 mt-1">Sponsors requiring independent tech validation or board-level strategic oversight.</div>
+                </div>
+              </div>
+            </div>
+
+            <button onclick="openModal('Advisor ($)')" class="w-full py-3 rounded-lg text-xs font-bold uppercase tracking-wider text-slate-200 bg-slate-800 hover:bg-brand-cyan hover:text-brand-obsidian transition-all border border-slate-700">
+              Select Advisor Model
+            </button>
+          </div>
+
+          <!-- Model 2: Consultant -->
+          <div class="glass-panel p-8 rounded-2xl border border-brand-cyan/40 bg-slate-900/50 flex flex-col justify-between hover:border-brand-cyan transition-all relative shadow-[0_0_30px_rgba(0,242,254,0.1)]">
+            <div class="absolute -top-3 right-6 bg-brand-cyan text-brand-obsidian text-[10px] font-mono font-extrabold uppercase px-3 py-1 rounded-full">
+  Most Requested
+            </div>
+            <div>
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold text-white">Consultant</h3>
+                <span class="text-lg font-mono font-bold text-brand-cyan tracking-wider">$$</span>
+              </div>
+              <p class="text-xs text-slate-400 mb-6 font-mono uppercase">Targeted Execution & Architecture</p>
+              
+              <div class="space-y-4 mb-8">
+                <div>
+                  <div class="text-xs font-mono text-slate-400 uppercase">Scope</div>
+                  <div class="text-sm text-slate-200 mt-1 font-medium">Deep gap analysis, AI architecture design, KPI workshops, and value creation playbook codification.</div>
+                </div>
+                <div>
+                  <div class="text-xs font-mono text-slate-400 uppercase">Velocity</div>
+                  <div class="text-sm font-mono text-brand-cyan mt-1">Days / Months</div>
+                </div>
+                <div>
+                  <div class="text-xs font-mono text-slate-400 uppercase">Ideal For</div>
+                  <div class="text-xs text-slate-300 mt-1">Assets executing a specific 90-day turnaround or AI modernization initiative.</div>
+                </div>
+              </div>
+            </div>
+
+            <button onclick="openModal('Consultant ($$)')" class="w-full py-3 rounded-lg text-xs font-bold uppercase tracking-wider text-brand-obsidian bg-brand-cyan hover:bg-white transition-all shadow-[0_0_20px_rgba(0,242,254,0.3)]">
+              Select Consultant Model
+            </button>
+          </div>
+
+          <!-- Model 3: Executive Operator -->
+          <div class="glass-panel p-8 rounded-2xl border border-brand-border/60 flex flex-col justify-between hover:border-brand-accent transition-all">
+            <div>
+              <div class="flex justify-between items-center mb-4">
+                <h3 class="text-2xl font-bold text-white">Executive Operator</h3>
+                <span class="text-lg font-mono font-bold text-brand-cyan tracking-wider">$$$</span>
+              </div>
+              <p class="text-xs text-slate-400 mb-6 font-mono uppercase">Direct Hands-On Leadership</p>
+              
+              <div class="space-y-4 mb-8">
+                <div>
+                  <div class="text-xs font-mono text-slate-400 uppercase">Scope</div>
+                  <div class="text-sm text-slate-200 mt-1 font-medium">Fractional or Interim CPTO, hands-on tech transformation, direct team restructuring, and operational overhaul.</div>
+                </div>
+                <div>
+                  <div class="text-xs font-mono text-slate-400 uppercase">Velocity</div>
+                  <div class="text-sm font-mono text-brand-cyan mt-1">Months</div>
+                </div>
+                <div>
+                  <div class="text-xs font-mono text-slate-400 uppercase">Ideal For</div>
+                  <div class="text-xs text-slate-300 mt-1">Assets during major leadership transitions, platform acquisitions, or mission-critical pivots.</div>
+                </div>
+              </div>
+            </div>
+
+            <button onclick="openModal('Executive Operator ($$$)')" class="w-full py-3 rounded-lg text-xs font-bold uppercase tracking-wider text-slate-200 bg-slate-800 hover:bg-brand-cyan hover:text-brand-obsidian transition-all border border-slate-700">
+              Select Operator Model
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE 4-STEP PROCESS -->
+    <section id="process" class="py-24 max-w-7xl mx-auto px-6">
+      <div class="text-center max-w-2xl mx-auto mb-16">
+        <p class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Operational Methodology</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">The 4-Step Value Engine</h2>
+        <p class="text-slate-400 text-sm mt-3">An institutional, systematic progression designed to isolate systemic inefficiencies and translate AI infrastructure into measurable EBITDA yield.</p>
+      </div>
+
+      <!-- Stepper Nav / Buttons -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-10">
+        <button onclick="setStep(0)" id="step-btn-0" class="step-btn p-4 rounded-xl border border-brand-cyan bg-brand-cyan/10 text-left transition-all">
+          <span class="text-xs font-mono text-brand-cyan font-semibold block">01 / STAGE</span>
+          <span class="text-sm font-bold text-white mt-1 block">Technology Review</span>
+        </button>
+        <button onclick="setStep(1)" id="step-btn-1" class="step-btn p-4 rounded-xl border border-slate-800 bg-slate-900/40 text-left transition-all hover:border-slate-700">
+          <span class="text-xs font-mono text-slate-400 font-semibold block">02 / STAGE</span>
+          <span class="text-sm font-bold text-slate-300 mt-1 block">Opportunity Definition</span>
+        </button>
+        <button onclick="setStep(2)" id="step-btn-2" class="step-btn p-4 rounded-xl border border-slate-800 bg-slate-900/40 text-left transition-all hover:border-slate-700">
+          <span class="text-xs font-mono text-slate-400 font-semibold block">03 / STAGE</span>
+          <span class="text-sm font-bold text-slate-300 mt-1 block">Performance Planning</span>
+        </button>
+        <button onclick="setStep(3)" id="step-btn-3" class="step-btn p-4 rounded-xl border border-slate-800 bg-slate-900/40 text-left transition-all hover:border-slate-700">
+          <span class="text-xs font-mono text-slate-400 font-semibold block">04 / STAGE</span>
+          <span class="text-sm font-bold text-slate-300 mt-1 block">Simulation & Execution</span>
+        </button>
+      </div>
+
+      <!-- Interactive Dynamic Display Panel -->
+      <div class="glass-panel p-8 sm:p-12 rounded-3xl border border-brand-border/80 relative overflow-hidden" id="step-content-container">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <div class="lg:col-span-7 space-y-4">
+            <div id="step-badge" class="inline-block px-3 py-1 rounded bg-brand-cyan/10 border border-brand-cyan/30 text-xs font-mono text-brand-cyan">
+              Stage 01: Reconnaissance & Discovery
+            </div>
+            <h3 id="step-title" class="text-2xl sm:text-3xl font-bold text-white">
+              Audit & Pre-Acquisition Technology Review
+            </h3>
+            <p id="step-description" class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              We ingest code repositories, architecture topology, cloud consumption runs, and technical management charts. Our goal is uncovering latent vulnerabilities, licensing risks, and calculating actual technical debt before committing growth capital.
+            </p>
+            <div class="pt-4 border-t border-slate-800">
+              <h4 class="text-xs font-mono text-slate-400 uppercase tracking-wider mb-3">Key Stage Outputs</h4>
+              <div id="step-outputs" class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-300 font-mono">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-cyan shrink-0"></i>
+                  <span>Architecture Scalability Audit</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-cyan shrink-0"></i>
+                  <span>Cost-of-Goods Runrate Breakdown</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-cyan shrink-0"></i>
+                  <span>Security & IP Provenance Scan</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-cyan shrink-0"></i>
+                  <span>Red Flag Exception Memo</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-5 bg-brand-obsidian/80 rounded-2xl p-6 border border-slate-800/90 font-mono text-xs">
+            <div class="flex justify-between items-center pb-3 border-b border-slate-800 mb-4 text-slate-400">
+              <span class="flex items-center gap-2"><i data-lucide="terminal" class="w-4 h-4 text-brand-cyan"></i> PROCESS_CONSOLE</span>
+              <span id="step-indicator" class="text-brand-cyan">PHASE 1/4</span>
+            </div>
+            <div id="step-console-data" class="space-y-2 text-slate-300 leading-relaxed">
+              <p class="text-brand-accent">> Ingesting target codebase & infra metrics...</p>
+              <p class="text-slate-400">> Benchmarking API latency, RAG pipelines & DB ops.</p>
+              <p class="text-slate-400">> Calculating 36-month technical debt amortization.</p>
+              <p class="text-emerald-400">> Red flag matrix created: 0 Critical / 3 Moderate.</p>
+            </div>
+            <div class="mt-6 pt-3 border-t border-slate-800 flex justify-between items-center text-[11px] text-slate-500">
+              <span>Cyan Engine: Active</span>
+              <span class="text-brand-cyan">Deterministic Validation</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CALL TO ACTION BANNER -->
+    <section class="py-20 max-w-7xl mx-auto px-6">
+      <div class="relative glass-panel rounded-3xl p-10 sm:p-16 border border-brand-cyan/40 overflow-hidden text-center">
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-brand-cyan/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-brand-electric/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-3xl mx-auto space-y-6">
+          <p class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Initiate Engagement</p>
+          <h2 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+            Schedule a Confidential Value Creation Conversation.
+          </h2>
+          <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+            Start with a conversation...End up gaining a new colleague, performance coach, and growth partner.
+          </p>
+          <div class="pt-4 flex flex-col sm:flex-row justify-center gap-4">
+            <button onclick="openModal()" class="px-8 py-4 rounded-xl font-bold text-sm tracking-wide text-brand-obsidian bg-brand-cyan hover:bg-white transition-all shadow-[0_0_35px_rgba(0,242,254,0.4)]">
+              Schedule Asset Audit Now
+            </button>
+            <a href="mailto:lee@cyancollective.ai" target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-xl font-semibold text-sm text-slate-200 border border-slate-700 hover:border-brand-cyan/50 hover:bg-slate-900/60 transition-all flex items-center justify-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4 text-brand-cyan"></i>
+              <span>Direct Partner Inquiry</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-brand-border/40 py-12 bg-brand-obsidian">
+    <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6 text-xs text-slate-500 font-mono">
+      <div class="flex items-center gap-3">
+        <span class="font-bold text-slate-300">CyanCollective.ai</span>
+        <span>•</span>
+        <span>Lee Powell, CPTO & Operating Partner</span>
+      </div>
+      <div>
+        <span>Technical, Operational, and Product-Based Value Creation</span>
+      </div>
+      <div>
+        <span>&copy; <span id="year"></span> CyanCollective LLC. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODAL: VALUE CREATION AUDIT INTAKE -->
+  <div id="audit-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div class="glass-panel w-full max-w-lg rounded-2xl p-6 sm:p-8 border border-brand-cyan/40 relative shadow-2xl">
+      <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="mb-6">
+        <span class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Confidential Advisory Intake</span>
+        <h3 class="text-xl font-bold text-white mt-1">Book a Value Creation Audit</h3>
+        <p class="text-xs text-slate-400 mt-1">Fill out this brief form. CyanCollective will respond to you to set up next steps. Thank you.</p>
+      </div>
+
+      <form id="audit-form" onsubmit="handleFormSubmit(event)" class="space-y-4 text-left">
+        <div>
+          <label class="block text-xs font-mono text-slate-300 mb-1">Executive Name</label>
+          <input required type="text" placeholder="e.g. Sarah Jenkins" class="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono text-slate-300 mb-1">Organization</label>
+          <input required type="text" placeholder="e.g. Apex Horizon Capital / Target Corp" class="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-1">Work Email</label>
+            <input required type="email" placeholder="partner@firm.com" class="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+          </div>
+          <div>
+            <label class="block text-xs font-mono text-slate-300 mb-1">Target Model</label>
+            <select id="modal-model-select" class="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+              <option value="General Audit">General Audit Review</option>
+              <option value="Advisor ($)">Advisor</option>
+              <option value="Consultant ($$)">Consultant</option>
+              <option value="Executive Operator ($$$)">Executive Operator</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono text-slate-300 mb-1">Challenge/Opportunity Description</label>
+          <textarea rows="3" placeholder="Context and/or background to expand upon..." class="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors resize-none"></textarea>
+        </div>
+
+        <button type="submit" class="w-full py-3.5 rounded-lg font-bold text-xs uppercase tracking-wider text-brand-obsidian bg-brand-cyan hover:bg-white transition-all shadow-[0_0_20px_rgba(0,242,254,0.3)] mt-2">
+          Send Request
+        </button>
+      </form>
+
+      <div id="form-success" class="hidden text-center py-8">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center mb-3">
+          <i data-lucide="check" class="w-6 h-6"></i>
+        </div>
+        <h4 class="text-white font-bold text-lg">Inquiry Dispatched</h4>
+        <p class="text-xs text-slate-400 mt-2">Thank you. Lee Powell and team will review your asset dossier within 24 hours.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- INTERACTIVE LOGIC SCRIPT -->
+  <script>
+    // Initialize current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // 4-Step Process Data Structure
+    const stepsData = [
+      {
+        badge: "Stage 01: Reconnaissance & Discovery",
+        title: "Audit & Pre-Acquisition Review",
+        indicator: "PHASE 1/4",
+        desc: "We ingest code repositories, architecture topology, cloud consumption runs, and technical management charts to quantify latent liabilities and IP defenses before committing capital.",
+        outputs: [
+          "Architecture Scalability Audit",
+          "Cost-of-Goods Runrate Breakdown",
+          "Security & IP Provenance Scan",
+          "Red Flag Exception Memo"
+        ],
+        console: [
+          "> Ingesting target codebase & infra metrics...",
+          "> Benchmarking API latency, RAG pipelines & DB ops.",
+          "> Calculating 36-month technical debt amortization.",
+          "> Red flag matrix created: 0 Critical / 3 Moderate."
+        ]
+      },
+      {
+        badge: "Stage 02: Strategic Problem Framing",
+        title: "Opportunity & Problem Definition",
+        indicator: "PHASE 2/4",
+        desc: "We delineate between low-ROI novelty AI features and structural, margin-accretive operational upgrades. Identifying where autonomous enterprise agents unlock multi-million dollar savings. The best solution is always a more well defined problem.",
+        outputs: [
+          "Enterprise AI Feasibility Map",
+          "Monetization Angle Assessment",
+          "Operational Bottleneck Diagnosis",
+          "High-Impact Intervention Priority Matrix"
+        ],
+        console: [
+          "> Isolating repetitive high-cost human workflow loops...",
+          "> Quantifying manual support & data extraction drag.",
+          "> Mapped 3 prime enterprise RAG deployment zones.",
+          "> Projected annual OpEx reduction: $3.2M-$4.5M."
+        ]
+      },
+      {
+        badge: "Stage 03: Executive Accountability",
+        title: "KPI & Measurement Playbook",
+        indicator: "PHASE 3/4",
+        desc: "Engineering operational targets that tie engineering sprints to board-mandated EBITDA milestones. Establishing continuous tracking for velocity, token efficiency, and customer net revenue retention.",
+        outputs: [
+          "Board-Level Value Creation Scorecard",
+          "Engineering Velocity vs. Margin Index",
+          "AI Cost-Per-Query Governance Matrix",
+          "Executive Milestone Playbook"
+        ],
+        console: [
+          "> Establishing baseline cycle time: 42 days -> target 14.",
+          "> Instrumenting real-time LLM token cost accounting.",
+          "> Finalized 180-day executive hold playbook.",
+          "> Aligning incentives with CPTO & engineering leadership."
+        ]
+      },
+      {
+        badge: "Stage 04: Execution & Scale",
+        title: "Execution & Growth Simulation",
+        indicator: "PHASE 4/4",
+        desc: "Hands-on simulation prior to implementation of new operating system and rapid testing under full-scale production loads. Stress testing unit economics to ensure durability prior to exit realization.",
+        outputs: [
+          "Production RAG & Agent Deployment",
+          "Cloud COGS Optimization (-20% to -40%)",
+          "Enterprise Contract Technical Backing",
+          "Exit Multiple Readiness Validation"
+        ],
+        console: [
+          "> Deploying production RAG microservice mesh...",
+          "> Stress simulation: 200,000 concurrent enterprise queries.",
+          "> Cloud optimization achieved: -32% infrastructure COGS.",
+          "> Execution verified: Readiness certified for sponsor review."
+        ]
+      }
+    ];
+
+    function setStep(index) {
+      const step = stepsData[index];
+      
+      // Update UI elements
+      document.getElementById('step-badge').textContent = step.badge;
+      document.getElementById('step-title').textContent = step.title;
+      document.getElementById('step-indicator').textContent = step.indicator;
+      document.getElementById('step-description').textContent = step.desc;
+
+      // Update Outputs list
+      const outputsContainer = document.getElementById('step-outputs');
+      outputsContainer.innerHTML = step.outputs.map(item => `
+        <div class="flex items-center gap-2">
+          <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-cyan shrink-0"></i>
+          <span>${item}</span>
+        </div>
+      `).join('');
+
+      // Update Console
+      const consoleContainer = document.getElementById('step-console-data');
+      consoleContainer.innerHTML = step.console.map((line, i) => {
+        const colorClass = i === step.console.length - 1 ? 'text-emerald-400' : (i === 0 ? 'text-brand-accent' : 'text-slate-400');
+        return `<p class="${colorClass}">${line}</p>`;
+      }).join('');
+
+      // Update Tab Styles
+      for (let i = 0; i < 4; i++) {
+        const btn = document.getElementById(`step-btn-${i}`);
+        if (i === index) {
+          btn.className = "step-btn p-4 rounded-xl border border-brand-cyan bg-brand-cyan/10 text-left transition-all";
+          btn.querySelector('span:first-child').className = "text-xs font-mono text-brand-cyan font-semibold block";
+          btn.querySelector('span:last-child').className = "text-sm font-bold text-white mt-1 block";
+        } else {
+          btn.className = "step-btn p-4 rounded-xl border border-slate-800 bg-slate-900/40 text-left transition-all hover:border-slate-700";
+          btn.querySelector('span:first-child').className = "text-xs font-mono text-slate-400 font-semibold block";
+          btn.querySelector('span:last-child').className = "text-sm font-bold text-slate-300 mt-1 block";
+        }
+      }
+
+      // Reinitialize Lucide icons dynamically
+      lucide.createIcons();
     }
 
-    rotateColor();
-  })();
-</script>
+    // Modal Control Functions
+    function openModal(modelValue) {
+      const modal = document.getElementById('audit-modal');
+      const select = document.getElementById('modal-model-select');
+      if (modelValue && select) {
+        select.value = modelValue;
+      }
+      modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('audit-modal').classList.add('hidden');
+      document.getElementById('audit-form').reset();
+      document.getElementById('audit-form').classList.remove('hidden');
+      document.getElementById('form-success').classList.add('hidden');
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      document.getElementById('audit-form').classList.add('hidden');
+      document.getElementById('form-success').classList.remove('hidden');
+      setTimeout(() => {
+        closeModal();
+      }, 3500);
+    }
+
+    // Initialize Lucide Icons on First Load
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
