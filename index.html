@@ -82,7 +82,7 @@
   <nav class="sticky top-0 z-50 glass-panel border-b border-brand-border/60 bg-brand-obsidian/80">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-3 group">
+      <a href="#" class="flex items-center gap-3 group"> 
         <div>
           <span class="text-xl font-bold tracking-tight text-white flex items-center gap-1">
             CyanCollective.ai
@@ -119,7 +119,7 @@
           <!-- Executive Badge -->
           <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-brand-cyan/30 bg-brand-cyan/5 text-xs font-mono uppercase tracking-widest text-brand-cyan">
             <span class="w-2 h-2 rounded-full bg-brand-cyan animate-pulse"></span>
-            PE Portfolio Advisory & Enterprise AI Architecture
+            PE Portfolio Advisory & Enterprise AI Performance Engine
           </div>
 
           <!-- Main Title -->
@@ -244,8 +244,8 @@
     <section id="offerings" class="py-24 max-w-7xl mx-auto px-6">
       <div class="max-w-2xl mb-16">
         <p class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Core Advisory Pillars</p>
-        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Strategic Value Creation Pillars</h2>
-        <p class="text-slate-400 text-sm mt-3">Targeted technical solutions calibrated across the private equity lifecycle—aligning human capital, eliminating technical debt, and deploying enterprise AI as a force multiplier for rapid EBITDA expansion.</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mt-2">Scalable Value Creation</h2>
+        <p class="text-slate-400 text-sm mt-3">Targeted solutions calibrated across the private equity lifecycle, aligning human capital, eliminating technical debt, and delivering scalable automation as a force multiplier for rapid EBITDA expansion.</p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -277,7 +277,7 @@
             </ul>
           </div>
           <div class="mt-8 pt-4 border-t border-slate-800">
-            <span class="text-xs text-slate-400 font-mono">Deliverable: Investment Committee Grade Risk & Upside Dossier</span>
+            <span class="text-xs text-slate-400 font-mono">Output: Investment Committee Grade Risk & Upside Dossier</span>
           </div>
         </div>
 
@@ -311,7 +311,7 @@
             </ul>
           </div>
           <div class="mt-8 pt-4 border-t border-slate-800">
-            <span class="text-xs text-slate-400 font-mono">Deliverable: Production AI Infrastructure & Governance Engine</span>
+            <span class="text-xs text-slate-400 font-mono">Output: Product Infrastructure & Governance Engine</span>
           </div>
         </div>
 
@@ -342,7 +342,7 @@
             </ul>
           </div>
           <div class="mt-8 pt-4 border-t border-slate-800">
-            <span class="text-xs text-slate-400 font-mono">Deliverable: 180-Day Value Creation Blueprint & Scorecard</span>
+            <span class="text-xs text-slate-400 font-mono">Output: 180-Day Value Creation Blueprint & Scorecard</span>
           </div>
         </div>
 
@@ -639,15 +639,22 @@
           <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
             Start with a conversation...End up gaining a new colleague, performance coach, and growth partner.
           </p>
+            <!-- UPDATED EMAIL CODE START -->  
+            
           <div class="pt-4 flex flex-col sm:flex-row justify-center gap-4">
-            <button onclick="openModal()" class="px-8 py-4 rounded-xl font-bold text-sm tracking-wide text-brand-obsidian bg-brand-cyan hover:bg-white transition-all shadow-[0_0_35px_rgba(0,242,254,0.4)]">
-              Schedule Asset Audit Now
+            <button onclick="openModal()" class="px-8 py-4 rounded-xl font-bold text-sm tracking-wide text-brand-obsidian bg-brand-cyan hover:bg-white transition-all shadow-[0_0_35px_rgba(0,242,254,0.4)] cursor-pointer">
+    Schedule Asset Audit Now
             </button>
-            <a href="mailto:lee@cyancollective.ai" target="_blank" rel="noopener noreferrer" class="px-8 py-4 rounded-xl font-semibold text-sm text-slate-200 border border-slate-700 hover:border-brand-cyan/50 hover:bg-slate-900/60 transition-all flex items-center justify-center gap-2">
-              <i data-lucide="mail" class="w-4 h-4 text-brand-cyan"></i>
-              <span>Direct Partner Inquiry</span>
+    
+            <a href="mailto:lee@cyancollective.ai?subject=Confidential%20PE%20Value%20Creation%20Inquiry" 
+     onclick="handleDirectEmail(event)" 
+     class="px-8 py-4 rounded-xl font-semibold text-sm text-slate-200 border border-slate-700 hover:border-brand-cyan/50 hover:bg-slate-900/60 transition-all flex items-center justify-center gap-2 cursor-pointer">
+            <i data-lucide="mail" class="w-4 h-4 text-brand-cyan"></i>
+            <span>Contact Us</span>
             </a>
-          </div>
+            </div>
+
+           <!-- UPDATED EMAIL CODE END --> 
         </div>
       </div>
     </section>
@@ -671,49 +678,53 @@
     </div>
   </footer>
 
-  <!-- MODAL: VALUE CREATION AUDIT INTAKE -->
-  <div id="audit-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
-    <div class="glass-panel w-full max-w-lg rounded-2xl p-6 sm:p-8 border border-brand-cyan/40 relative shadow-2xl">
-      <button onclick="closeModal()" class="absolute top-5 right-5 text-slate-400 hover:text-white">
+    
+<!-- MODAL: VALUE CREATION AUDIT INTAKE START -->
+  <div id="audit-modal" style="display: none;" class="fixed inset-0 z-50 items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <!-- Click backdrop to close -->
+    <div class="fixed inset-0 -z-10" onclick="closeModal()"></div>
+
+    <div class="glass-panel w-full max-w-lg rounded-2xl p-6 sm:p-8 border border-brand-cyan/40 relative shadow-2xl bg-brand-obsidian/95">
+      <button onclick="closeModal()" type="button" class="absolute top-5 right-5 text-slate-400 hover:text-white transition-colors">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
       <div class="mb-6">
         <span class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Confidential Advisory Intake</span>
-        <h3 class="text-xl font-bold text-white mt-1">Book a Value Creation Audit</h3>
-        <p class="text-xs text-slate-400 mt-1">Fill out this brief form. CyanCollective will respond to you to set up next steps. Thank you.</p>
+        <h3 class="text-xl font-bold text-white mt-1">Book a Value Creation Consultation</h3>
+        <p class="text-xs text-slate-400 mt-1">This request will be evaluated by CyanCollective and our strategic advisory team. We will reach out to schedule next steps. Thank you.</p>
       </div>
 
       <form id="audit-form" onsubmit="handleFormSubmit(event)" class="space-y-4 text-left">
         <div>
-          <label class="block text-xs font-mono text-slate-300 mb-1">Executive Name</label>
-          <input required type="text" placeholder="e.g. Sarah Jenkins" class="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+          <label class="block text-xs font-mono text-slate-300 mb-1">Name *</label>
+          <input required id="audit-name" type="text" placeholder="e.g. Sarah Jenkins" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
         </div>
 
         <div>
-          <label class="block text-xs font-mono text-slate-300 mb-1">Organization</label>
-          <input required type="text" placeholder="e.g. Apex Horizon Capital / Target Corp" class="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+          <label class="block text-xs font-mono text-slate-300 mb-1">Organization *</label>
+          <input required id="audit-firm" type="text" placeholder="e.g. Apex Horizon Capital / Target Corp" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
         </div>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-mono text-slate-300 mb-1">Work Email</label>
-            <input required type="email" placeholder="partner@firm.com" class="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+            <label class="block text-xs font-mono text-slate-300 mb-1">Work Email *</label>
+            <input required id="audit-email" type="email" placeholder="partner@firm.com" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
           </div>
           <div>
             <label class="block text-xs font-mono text-slate-300 mb-1">Target Model</label>
-            <select id="modal-model-select" class="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
+            <select id="modal-model-select" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
               <option value="General Audit">General Audit Review</option>
-              <option value="Advisor ($)">Advisor</option>
-              <option value="Consultant ($$)">Consultant</option>
-              <option value="Executive Operator ($$$)">Executive Operator</option>
+              <option value="Advisor ($)">Advisor </option>
+              <option value="Consultant ($$)">Consultant </option>
+              <option value="Executive Operator ($$$)">Executive Operator </option>
             </select>
           </div>
         </div>
 
         <div>
-          <label class="block text-xs font-mono text-slate-300 mb-1">Challenge/Opportunity Description</label>
-          <textarea rows="3" placeholder="Context and/or background to expand upon..." class="w-full bg-slate-900/80 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors resize-none"></textarea>
+          <label class="block text-xs font-mono text-slate-300 mb-1">Opportunity or Challenge. Please provide context. </label>
+          <textarea id="audit-notes" rows="3" placeholder="e.g. We are looking to consolidate our entire technology and product stack...and we only have 6 months." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors resize-none"></textarea>
         </div>
 
         <button type="submit" class="w-full py-3.5 rounded-lg font-bold text-xs uppercase tracking-wider text-brand-obsidian bg-brand-cyan hover:bg-white transition-all shadow-[0_0_20px_rgba(0,242,254,0.3)] mt-2">
@@ -725,19 +736,29 @@
         <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center mb-3">
           <i data-lucide="check" class="w-6 h-6"></i>
         </div>
-        <h4 class="text-white font-bold text-lg">Inquiry Dispatched</h4>
-        <p class="text-xs text-slate-400 mt-2">Thank you. Lee Powell and team will review your asset dossier within 24 hours.</p>
+        <h4 class="text-white font-bold text-lg">Inquiry Prepared</h4>
+        <p class="text-xs text-slate-400 mt-2 max-w-sm mx-auto">Your email draft has been generated. Lee Powell and team will review your asset dossier within 24 hours.</p>
       </div>
-
     </div>
   </div>
 
-  <!-- INTERACTIVE LOGIC SCRIPT -->
-  <script>
-    // Initialize current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <!-- FLOATING CLIPBOARD TOAST -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div class="glass-panel bg-slate-950/95 border border-brand-cyan/60 px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 text-xs font-mono text-slate-200">
+      <i data-lucide="check-circle" class="w-4 h-4 text-brand-cyan"></i>
+      <span id="toast-msg">Email copied to clipboard</span>
+    </div>
+  </div>
+<!-- MODAL: VALUE CREATION AUDIT INTAKE END -->
 
-    // 4-Step Process Data Structure
+    
+<!-- INTERACTIVE LOGIC SCRIPT START-->
+<script>
+    // 1. Footer Year
+    const yearEl = document.getElementById('year');
+    if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+    // 2. 4-Step Process Data Structure
     const stepsData = [
       {
         badge: "Stage 01: Reconnaissance & Discovery",
@@ -797,7 +818,7 @@
         badge: "Stage 04: Execution & Scale",
         title: "Execution & Growth Simulation",
         indicator: "PHASE 4/4",
-        desc: "Hands-on simulation prior to implementation of new operating system and rapid testing under full-scale production loads. Stress testing unit economics to ensure durability prior to exit realization.",
+        desc: "Hands-on simulation prior to implementation of new operating system launch with rapid testing under full-scale production loads. Stress testing unit economics to ensure durability prior to exit realization.",
         outputs: [
           "Production RAG & Agent Deployment",
           "Cloud COGS Optimization (-20% to -40%)",
@@ -815,14 +836,11 @@
 
     function setStep(index) {
       const step = stepsData[index];
-      
-      // Update UI elements
       document.getElementById('step-badge').textContent = step.badge;
       document.getElementById('step-title').textContent = step.title;
       document.getElementById('step-indicator').textContent = step.indicator;
       document.getElementById('step-description').textContent = step.desc;
 
-      // Update Outputs list
       const outputsContainer = document.getElementById('step-outputs');
       outputsContainer.innerHTML = step.outputs.map(item => `
         <div class="flex items-center gap-2">
@@ -831,14 +849,12 @@
         </div>
       `).join('');
 
-      // Update Console
       const consoleContainer = document.getElementById('step-console-data');
       consoleContainer.innerHTML = step.console.map((line, i) => {
         const colorClass = i === step.console.length - 1 ? 'text-emerald-400' : (i === 0 ? 'text-brand-accent' : 'text-slate-400');
         return `<p class="${colorClass}">${line}</p>`;
       }).join('');
 
-      // Update Tab Styles
       for (let i = 0; i < 4; i++) {
         const btn = document.getElementById(`step-btn-${i}`);
         if (i === index) {
@@ -851,41 +867,102 @@
           btn.querySelector('span:last-child').className = "text-sm font-bold text-slate-300 mt-1 block";
         }
       }
-
-      // Reinitialize Lucide icons dynamically
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
     }
 
-    // Modal Control Functions
+    // 3. Modal Opening & Closing
     function openModal(modelValue) {
       const modal = document.getElementById('audit-modal');
       const select = document.getElementById('modal-model-select');
       if (modelValue && select) {
         select.value = modelValue;
       }
-      modal.classList.remove('hidden');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      if (window.lucide) lucide.createIcons();
     }
 
     function closeModal() {
-      document.getElementById('audit-modal').classList.add('hidden');
+      const modal = document.getElementById('audit-modal');
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
       document.getElementById('audit-form').reset();
       document.getElementById('audit-form').classList.remove('hidden');
       document.getElementById('form-success').classList.add('hidden');
     }
 
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    // 4. Modal Form Submission -> Sends mail to lee@cyancollective.ai
     function handleFormSubmit(e) {
       e.preventDefault();
+      const name = document.getElementById('audit-name').value;
+      const firm = document.getElementById('audit-firm').value;
+      const email = document.getElementById('audit-email').value;
+      const model = document.getElementById('modal-model-select').value;
+      const notes = document.getElementById('audit-notes').value;
+
+      const subject = encodeURIComponent(`Value Creation Audit Inquiry — ${firm}`);
+      const body = encodeURIComponent(
+        `Executive Name: ${name}\n` +
+        `Firm / Portfolio Asset: ${firm}\n` +
+        `Direct Email: ${email}\n` +
+        `Selected Model: ${model}\n\n` +
+        `Context & Objectives:\n${notes}\n`
+      );
+
+      // Trigger mail client to lee@cyancollective.ai
+      window.location.href = `mailto:lee@cyancollective.ai?subject=${subject}&body=${body}`;
+
+      // Show in-modal confirmation
       document.getElementById('audit-form').classList.add('hidden');
       document.getElementById('form-success').classList.remove('hidden');
+      if (window.lucide) lucide.createIcons();
+
       setTimeout(() => {
         closeModal();
+      }, 4000);
+    }
+
+    // 5. Direct Partner Inquiry Button -> Copies email & triggers mail client
+    function handleDirectEmail(e) {
+      e.preventDefault();
+      const email = 'lee@cyancollective.ai';
+      const subject = encodeURIComponent('Confidential PE Value Creation Inquiry');
+      
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(email).then(() => {
+          showToast(`Copied ${email} to clipboard!`);
+        });
+      }
+
+      setTimeout(() => {
+        window.location.href = `mailto:${email}?subject=${subject}`;
+      }, 250);
+    }
+
+    // 6. Toast Notification Helper
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const msg = document.getElementById('toast-msg');
+      if (!toast || !msg) return;
+      msg.textContent = message;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
       }, 3500);
     }
 
-    // Initialize Lucide Icons on First Load
+    // 7. Initial Icon Load
     document.addEventListener("DOMContentLoaded", () => {
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
     });
   </script>
+<!-- INTERACTIVE LOGIC SCRIPT END-->    
 </body>
 </html>
