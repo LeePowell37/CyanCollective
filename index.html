@@ -90,13 +90,22 @@
 <!-- NAVIGATION BAR -->
   <nav class="sticky top-0 z-50 bg-brand-obsidian/85 backdrop-blur-md shadow-[0_4px_30px_rgba(0,242,254,0.12)]">
     <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      
       <!-- Brand Logo -->
       <a href="#" class="flex items-center gap-3 group"> 
         <div>
-          <span class="text-xl font-bold tracking-tight text-white flex items-center gap-1">
-            CyanCollective.ai
-          </span>
-          <span class="block text-[11px] font-mono tracking-widest uppercase text-slate-300">Value Creation Advisory</span>
+          <!-- Mobile Only: 2 Lines, Larger Font, No .ai, No Subtitle -->
+          <div class="md:hidden font-black tracking-tight text-white text-[22px] leading-[0.95]">
+            Cyan<br>Collective.ai
+          </div>
+
+          <!-- Tablet & Desktop: Original Single Line with .ai and Subtitle -->
+          <div class="hidden md:block">
+            <span class="text-xl font-bold tracking-tight text-white flex items-center gap-1">
+              CyanCollective.ai
+            </span>
+            <span class="block text-[11px] font-mono tracking-widest uppercase text-slate-300">Value Creation Advisory</span>
+          </div>
         </div>
       </a>
 
