@@ -1,16 +1,14 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth scroll-pt-14">
+<html lang="en" class="scroll-smooth scroll-pt-24">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CyanCollective.ai | Enterprise AI & PE Value Creation Advisory</title>
   <meta name="description" content="Precision Value Creation for Enterprise Portfolios and Private Equity Assets. Led by Lee Powell, CPTO & PE Value Creation Advisor.">
-
   <!-- Inter & Plus Jakarta Sans Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -41,10 +39,8 @@
       }
     }
   </script>
-
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-    
   <!-- Site Tracking -->
   <script type="text/javascript">
     (function(c,l,a,r,i,t,y){
@@ -52,8 +48,7 @@
         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
     })(window, document, "clarity", "script", "z1aywtqlqk");
-  </script>  
-
+  </script>
   <style>
     /* Custom Glow & Glassmorphism Utilities */
     .glass-panel {
@@ -62,8 +57,11 @@
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(56, 189, 248, 0.16);
     }
-    .glass-panel:hover {
-      border-color: rgba(0, 242, 254, 0.35);
+    /* Only apply interactive hover borders to actual clickable elements */
+    a.glass-panel:hover,
+    button.glass-panel:hover,
+    .interactive-card:hover {
+      border-color: rgba(0, 242, 254, 0.45);
     }
     .text-glow {
       text-shadow: 0 0 24px rgba(0, 242, 254, 0.35);
@@ -80,9 +78,7 @@
     }
   </style>
 </head>
-
 <body class="bg-brand-obsidian text-slate-100 font-sans antialiased selection:bg-brand-cyan selection:text-brand-obsidian relative overflow-x-hidden min-h-screen">
-
   <!-- Ambient Backdrop Glows -->
   <div class="fixed top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[600px] bg-radial-glow pointer-events-none z-0"></div>
   <div class="fixed inset-0 bg-grid-pattern opacity-60 pointer-events-none z-0"></div>
@@ -90,15 +86,13 @@
   <!-- NAVIGATION BAR (Optimized for 375px screens) -->
   <nav class="sticky top-0 z-50 bg-brand-obsidian/85 backdrop-blur-md shadow-[0_4px_30px_rgba(0,242,254,0.12)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
-      
       <!-- Brand Logo -->
-      <a href="#" class="flex items-center gap-3 group shrink-0"> 
+      <a href="#" class="flex items-center gap-3 group shrink-0">
         <div>
-          <!-- Mobile Only: 2 Lines, Larger Font, No .ai, No Subtitle -->
+          <!-- Mobile Only: 2 Lines, Larger Font -->
           <div class="md:hidden font-black tracking-tight text-white text-[20px] sm:text-[22px] leading-[0.95]">
             Cyan<br>Collective.ai
           </div>
-
           <!-- Tablet & Desktop: Original Single Line with .ai and Subtitle -->
           <div class="hidden md:block">
             <span class="text-xl font-bold tracking-tight text-white flex items-center gap-1">
@@ -123,7 +117,6 @@
         <button onclick="openModal()" class="relative group px-3 py-2 sm:px-5 sm:py-2.5 rounded-lg font-semibold text-[11px] sm:text-xs uppercase tracking-wider text-brand-obsidian bg-brand-cyan hover:bg-white transition-all shadow-[0_0_20px_rgba(0,242,254,0.3)] hover:shadow-[0_0_30px_rgba(0,242,254,0.5)] whitespace-nowrap">
           Request a Consult
         </button>
-
         <!-- Mobile Menu Button -->
         <button id="mobile-menu-btn" onclick="toggleMobileMenu()" type="button" aria-label="Toggle Navigation Menu" class="md:hidden p-2 rounded-lg text-slate-300 hover:text-brand-cyan hover:bg-slate-900 border border-slate-800 transition-colors shrink-0">
           <i id="menu-icon" data-lucide="menu" class="w-6 h-6"></i>
@@ -155,7 +148,6 @@
           <i data-lucide="chevron-right" class="w-4 h-4 text-slate-600"></i>
         </a>
       </div>
-
       <div class="pt-3 border-t border-slate-800/80">
         <a href="mailto:lee@cyancollective.ai" onclick="handleDirectEmail(event); toggleMobileMenu();" class="w-full py-2.5 rounded-lg text-center font-medium text-xs text-slate-300 border border-slate-800 hover:border-brand-cyan/50 transition-all flex items-center justify-center gap-2">
           <i data-lucide="mail" class="w-4 h-4 text-brand-cyan"></i>
@@ -166,11 +158,9 @@
   </nav>
 
   <main class="relative z-10">
-
     <!-- HERO SECTION -->
     <section class="pt-16 sm:pt-24 pb-16 sm:pb-20 px-4 sm:px-6 max-w-7xl mx-auto text-center md:text-left">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-        
         <div class="lg:col-span-8 space-y-6">
           <!-- Executive Badge -->
           <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-brand-cyan/30 bg-brand-cyan/5 text-[11px] sm:text-xs font-mono uppercase tracking-wider text-brand-cyan text-left">
@@ -185,7 +175,7 @@
 
           <!-- Value Prop Paragraph -->
           <p class="text-base sm:text-xl text-slate-300 max-w-3xl font-normal leading-relaxed">
-           CyanCollective, led by Lee Powell, is your executive partner for optimizing human capital, eliminating organizational drag, and driving rapid value creation at scale.
+            CyanCollective, led by Lee Powell, is your executive partner for optimizing human capital, eliminating organizational drag, and driving rapid value creation at scale.
           </p>
 
           <!-- Primary CTAs -->
@@ -204,7 +194,6 @@
         <div class="lg:col-span-4">
           <div class="glass-panel p-5 sm:p-6 rounded-2xl border border-brand-border relative overflow-hidden glow-cyan-box text-left">
             <div class="absolute -right-12 -top-12 w-40 h-40 bg-brand-cyan/10 rounded-full blur-2xl"></div>
-            
             <div class="flex items-center gap-4 mb-5">
               <div class="w-14 h-14 rounded-full bg-slate-800 border-2 border-brand-cyan/60 flex items-center justify-center text-brand-cyan font-mono font-bold text-xl shrink-0">
                 LP
@@ -215,7 +204,6 @@
                 <p class="text-[11px] text-slate-400">Founder, CyanCollective.ai</p>
               </div>
             </div>
-
             <div class="space-y-3 pt-2 text-xs border-t border-slate-800">
               <div class="flex justify-between items-center text-slate-300">
                 <span class="text-slate-400">Strategic Alignment:</span>
@@ -230,13 +218,11 @@
                 <span class="font-semibold text-slate-200">EBITDA & Enterprise AI OS</span>
               </div>
             </div>
-
             <div class="mt-5 p-3 rounded-lg bg-slate-950/70 border border-slate-800/80 text-[12px] sm:text-[13px] text-slate-400 leading-relaxed font-mono">
               "We compress 3-year AI roadmap cycles into 30, 60, 90-day quantifiable EBITDA inflection points."
             </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -249,9 +235,8 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          
           <!-- Metric Card 1 -->
-          <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-brand-border/60 relative group hover:border-brand-cyan/60 transition-all text-left">
+          <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-brand-border/60 relative text-left">
             <div class="text-xs font-mono uppercase text-brand-cyan tracking-wider mb-2">Market Outperformance</div>
             <div class="text-4xl lg:text-5xl font-black text-white tracking-tight flex items-baseline gap-1">
               +2.0% <span class="text-sm font-semibold text-brand-accent">Alpha</span>
@@ -265,7 +250,7 @@
           </div>
 
           <!-- Metric Card 2 -->
-          <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-brand-border/60 relative group hover:border-brand-cyan/60 transition-all text-left">
+          <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-brand-border/60 relative text-left">
             <div class="text-xs font-mono uppercase text-brand-cyan tracking-wider mb-2">Net-New Revenue & Efficiency</div>
             <div class="text-4xl lg:text-5xl font-black text-white tracking-tight flex items-baseline gap-1">
               $100M+ <span class="text-sm font-semibold text-brand-accent">9-Figure</span>
@@ -279,7 +264,7 @@
           </div>
 
           <!-- Metric Card 3 -->
-          <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-brand-border/60 relative group hover:border-brand-cyan/60 transition-all text-left">
+          <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-brand-border/60 relative text-left">
             <div class="text-xs font-mono uppercase text-brand-cyan tracking-wider mb-2">Commercial Traction</div>
             <div class="text-4xl lg:text-5xl font-black text-white tracking-tight flex items-baseline gap-1">
               $10M+ <span class="text-sm font-semibold text-brand-accent">8-Figure ACV</span>
@@ -291,7 +276,6 @@
               Led technical and commercial architecture negotiations closing multi-million recurring contracts with Tier-1 enterprise buyers.
             </p>
           </div>
-
         </div>
       </div>
     </section>
@@ -305,9 +289,8 @@
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-        
         <!-- Offering 1: Evaluate -->
-        <div class="glass-panel rounded-2xl p-6 sm:p-8 border border-brand-border/60 flex flex-col justify-between hover:border-brand-cyan/50 transition-all text-left">
+        <div class="glass-panel rounded-2xl p-6 sm:p-8 border border-brand-border/60 flex flex-col justify-between text-left">
           <div>
             <!-- Icon + Header Descriptor -->
             <div class="flex items-center gap-3.5 mb-6">
@@ -343,7 +326,7 @@
         </div>
 
         <!-- Offering 2: Implement -->
-        <div class="glass-panel rounded-2xl p-6 sm:p-8 border border-brand-cyan/30 bg-slate-900/40 flex flex-col justify-between hover:border-brand-cyan transition-all relative text-left">
+        <div class="glass-panel rounded-2xl p-6 sm:p-8 border border-brand-cyan/30 bg-slate-900/40 flex flex-col justify-between relative text-left">
           <div class="absolute -top-3 right-6 bg-brand-cyan text-brand-obsidian text-[10px] font-mono font-extrabold uppercase px-3 py-1 rounded-full">
             High Multiplier
           </div>
@@ -382,7 +365,7 @@
         </div>
 
         <!-- Offering 3: Enhance -->
-        <div class="glass-panel rounded-2xl p-6 sm:p-8 border border-brand-border/60 flex flex-col justify-between hover:border-brand-cyan/50 transition-all text-left">
+        <div class="glass-panel rounded-2xl p-6 sm:p-8 border border-brand-border/60 flex flex-col justify-between text-left">
           <div>
             <!-- Icon + Header Descriptor -->
             <div class="flex items-center gap-3.5 mb-6">
@@ -416,7 +399,6 @@
             <span class="text-xs text-slate-400 font-mono">Output: 180-Day Value Creation Blueprint & Scorecard</span>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -424,13 +406,13 @@
     <section id="sectors" class="py-20 border-t border-brand-border/40 bg-brand-obsidian relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          
           <!-- Left Column: Transformation Domains -->
           <div class="lg:col-span-6 space-y-6">
             <div>
               <p class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Functional Capabilities</p>
               <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2">Successfully Delivering Transformation &amp; Innovation for Decades Across:</h2>
             </div>
+
             <!-- Stack on small mobile, 2 columns on tablet/up -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
               <div class="p-4 rounded-xl glass-panel border border-brand-border/60 flex items-center gap-3">
@@ -452,19 +434,19 @@
               <div class="p-4 rounded-xl glass-panel border border-brand-border/60 flex items-center gap-3">
                 <i data-lucide="user" class="w-5 h-5 text-brand-cyan shrink-0"></i>
                 <span class="text-sm font-semibold text-slate-200">Audience Segmentation</span>
-              </div>  
+              </div>
               <div class="p-4 rounded-xl glass-panel border border-brand-border/60 flex items-center gap-3">
                 <i data-lucide="search" class="w-5 h-5 text-brand-cyan shrink-0"></i>
                 <span class="text-sm font-semibold text-slate-200">Market Research</span>
-              </div>    
+              </div>
               <div class="p-4 rounded-xl glass-panel border border-brand-border/60 flex items-center gap-3">
                 <i data-lucide="sparkles" class="w-5 h-5 text-brand-cyan shrink-0"></i>
                 <span class="text-sm font-semibold text-slate-200">Creative Content</span>
-              </div>     
+              </div>
               <div class="p-4 rounded-xl glass-panel border border-brand-border/60 flex items-center gap-3">
                 <i data-lucide="box" class="w-5 h-5 text-brand-cyan shrink-0"></i>
                 <span class="text-sm font-semibold text-slate-200">Product Development</span>
-              </div>   
+              </div>
             </div>
           </div>
 
@@ -474,6 +456,7 @@
               <p class="text-xs font-mono uppercase tracking-widest text-brand-cyan">Sector Depth</p>
               <h2 class="text-2xl sm:text-3xl font-bold text-white mt-2">Experienced Industry Verticals</h2>
             </div>
+
             <!-- Stack on small mobile, 2 columns on tablet/up -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
               <div class="p-4 rounded-xl glass-panel border border-brand-border/60 text-left">
@@ -500,19 +483,18 @@
                 <div class="text-[11px] font-mono text-brand-accent uppercase mb-1">Domain Focus</div>
                 <div class="text-base font-bold text-white">Waste Management</div>
                 <p class="text-xs text-slate-400 mt-1">Logistics, product data optimization, and circular economy analyses.</p>
-              </div>  
+              </div>
               <div class="p-4 rounded-xl glass-panel border border-brand-border/60 text-left">
                 <div class="text-[11px] font-mono text-brand-accent uppercase mb-1">Domain Focus</div>
                 <div class="text-base font-bold text-white">Energy</div>
                 <p class="text-xs text-slate-400 mt-1">Data infrastructure modernization, operational efficiency, and platform consolidation.</p>
-              </div>  
+              </div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
-      
+
     <!-- FLEXIBLE ENGAGEMENT MODELS -->
     <section id="models" class="py-20 bg-brand-surface/50 border-t border-brand-border/40">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
@@ -523,16 +505,14 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
-          
           <!-- Model 1: Advisor -->
-          <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-brand-border/60 flex flex-col justify-between hover:border-brand-accent transition-all text-left">
+          <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-brand-border/60 flex flex-col justify-between text-left">
             <div>
               <div class="flex justify-between items-center mb-4">
                 <h3 class="text-2xl font-bold text-white">Advisor</h3>
                 <span class="text-lg font-mono font-bold text-brand-cyan tracking-wider">$</span>
               </div>
               <p class="text-xs text-slate-400 mb-6 font-mono uppercase">Strategic Oversight & Sounding Board</p>
-              
               <div class="space-y-4 mb-8">
                 <div>
                   <div class="text-xs font-mono text-slate-400 uppercase">Scope</div>
@@ -548,14 +528,13 @@
                 </div>
               </div>
             </div>
-
             <button onclick="openModal('Advisor ($)')" class="w-full py-3 rounded-lg text-xs font-bold uppercase tracking-wider text-slate-200 bg-slate-800 hover:bg-brand-cyan hover:text-brand-obsidian transition-all border border-slate-700">
               Select Advisor Model
             </button>
           </div>
 
           <!-- Model 2: Consultant -->
-          <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-brand-cyan/40 bg-slate-900/50 flex flex-col justify-between hover:border-brand-cyan transition-all relative shadow-[0_0_30px_rgba(0,242,254,0.1)] text-left">
+          <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-brand-cyan/40 bg-slate-900/50 flex flex-col justify-between relative shadow-[0_0_30px_rgba(0,242,254,0.1)] text-left">
             <div class="absolute -top-3 right-6 bg-brand-cyan text-brand-obsidian text-[10px] font-mono font-extrabold uppercase px-3 py-1 rounded-full">
               Most Requested
             </div>
@@ -565,7 +544,6 @@
                 <span class="text-lg font-mono font-bold text-brand-cyan tracking-wider">$$</span>
               </div>
               <p class="text-xs text-slate-400 mb-6 font-mono uppercase">Targeted Execution & Architecture</p>
-              
               <div class="space-y-4 mb-8">
                 <div>
                   <div class="text-xs font-mono text-slate-400 uppercase">Scope</div>
@@ -581,21 +559,19 @@
                 </div>
               </div>
             </div>
-
             <button onclick="openModal('Consultant ($$)')" class="w-full py-3 rounded-lg text-xs font-bold uppercase tracking-wider text-brand-obsidian bg-brand-cyan hover:bg-white transition-all shadow-[0_0_20px_rgba(0,242,254,0.3)]">
               Select Consultant Model
             </button>
           </div>
 
           <!-- Model 3: Executive Operator -->
-          <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-brand-border/60 flex flex-col justify-between hover:border-brand-accent transition-all text-left">
+          <div class="glass-panel p-6 sm:p-8 rounded-2xl border border-brand-border/60 flex flex-col justify-between text-left">
             <div>
               <div class="flex justify-between items-center mb-4">
                 <h3 class="text-2xl font-bold text-white">Executive Operator</h3>
                 <span class="text-lg font-mono font-bold text-brand-cyan tracking-wider">$$$</span>
               </div>
               <p class="text-xs text-slate-400 mb-6 font-mono uppercase">Direct Hands-On Leadership</p>
-              
               <div class="space-y-4 mb-8">
                 <div>
                   <div class="text-xs font-mono text-slate-400 uppercase">Scope</div>
@@ -611,12 +587,10 @@
                 </div>
               </div>
             </div>
-
             <button onclick="openModal('Executive Operator ($$$)')" class="w-full py-3 rounded-lg text-xs font-bold uppercase tracking-wider text-slate-200 bg-slate-800 hover:bg-brand-cyan hover:text-brand-obsidian transition-all border border-slate-700">
               Select Operator Model
             </button>
           </div>
-
         </div>
       </div>
     </section>
@@ -652,7 +626,6 @@
       <!-- Interactive Dynamic Display Panel -->
       <div class="glass-panel p-6 sm:p-12 rounded-2xl sm:rounded-3xl border border-brand-border/80 relative overflow-hidden" id="step-content-container">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          
           <div class="lg:col-span-7 space-y-4 text-left">
             <div id="step-badge" class="inline-block px-3 py-1 rounded bg-brand-cyan/10 border border-brand-cyan/30 text-xs font-mono text-brand-cyan">
               Stage 01: Reconnaissance & Discovery
@@ -692,17 +665,16 @@
               <span id="step-indicator" class="text-brand-cyan">PHASE 1/4</span>
             </div>
             <div id="step-console-data" class="space-y-2 text-slate-300 leading-relaxed text-[11px] sm:text-xs">
-              <p class="text-brand-accent">> Ingesting target codebase & infra metrics...</p>
-              <p class="text-slate-400">> Benchmarking API latency, RAG pipelines & DB ops.</p>
-              <p class="text-slate-400">> Calculating 36-month technical debt amortization.</p>
-              <p class="text-emerald-400">> Red flag matrix created: 0 Critical / 3 Moderate.</p>
+              <p class="text-brand-accent">&gt; Ingesting target codebase & infra metrics...</p>
+              <p class="text-slate-400">&gt; Benchmarking API latency, RAG pipelines & DB ops.</p>
+              <p class="text-slate-400">&gt; Calculating 36-month technical debt amortization.</p>
+              <p class="text-emerald-400">&gt; Red flag matrix created: 0 Critical / 3 Moderate.</p>
             </div>
             <div class="mt-6 pt-3 border-t border-slate-800 flex justify-between items-center text-[10px] sm:text-[11px] text-slate-500">
               <span>Cyan Engine: Active</span>
               <span class="text-brand-cyan">Deterministic Validation</span>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -726,9 +698,8 @@
             <button onclick="openModal()" class="px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-bold text-xs sm:text-sm tracking-wide text-brand-obsidian bg-brand-cyan hover:bg-white transition-all shadow-[0_0_35px_rgba(0,242,254,0.4)] cursor-pointer">
               Schedule Asset Audit Now
             </button>
-    
-            <a href="mailto:lee@cyancollective.ai?subject=Confidential%20PE%20Value%20Creation%20Inquiry" 
-               onclick="handleDirectEmail(event)" 
+            <a href="mailto:lee@cyancollective.ai?subject=Confidential%20PE%20Value%20Creation%20Inquiry"
+               onclick="handleDirectEmail(event)"
                class="px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl font-semibold text-xs sm:text-sm text-slate-200 border border-slate-700 hover:border-brand-cyan/50 hover:bg-slate-900/60 transition-all flex items-center justify-center gap-2 cursor-pointer">
               <i data-lucide="mail" class="w-4 h-4 text-brand-cyan"></i>
               <span>Contact Us</span>
@@ -737,7 +708,6 @@
         </div>
       </div>
     </section>
-
   </main>
 
   <!-- FOOTER -->
@@ -760,8 +730,6 @@
   <!-- MODAL: VALUE CREATION AUDIT INTAKE (Keyboard/iPhone friendly) -->
   <div id="audit-modal" style="display: none;" class="fixed inset-0 z-50 items-center justify-center p-3 sm:p-4 bg-black/80 backdrop-blur-md">
     <div class="fixed inset-0 -z-10" onclick="closeModal()"></div>
-
-    <!-- Added max-h-[90vh] and overflow-y-auto so users on phones can scroll past keyboard -->
     <div class="glass-panel w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl p-5 sm:p-8 border border-brand-cyan/40 relative shadow-2xl bg-brand-obsidian/95">
       <button onclick="closeModal()" type="button" class="absolute top-4 right-4 sm:top-5 sm:right-5 text-slate-400 hover:text-white transition-colors">
         <i data-lucide="x" class="w-5 h-5"></i>
@@ -778,12 +746,10 @@
           <label class="block text-xs font-mono text-slate-300 mb-1">Name *</label>
           <input required id="audit-name" type="text" placeholder="e.g. Sarah Jenkins" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
         </div>
-
         <div>
           <label class="block text-xs font-mono text-slate-300 mb-1">Organization *</label>
           <input required id="audit-firm" type="text" placeholder="e.g. Apex Horizon Capital / Target Corp" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors">
         </div>
-
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
           <div>
             <label class="block text-xs font-mono text-slate-300 mb-1">Work Email *</label>
@@ -799,23 +765,33 @@
             </select>
           </div>
         </div>
-
         <div>
           <label class="block text-xs font-mono text-slate-300 mb-1">Opportunity or Challenge. Please provide context.</label>
           <textarea id="audit-notes" rows="3" placeholder="e.g. We are looking to consolidate our entire technology and product stack...and we only have 6 months." class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3.5 py-2.5 text-sm text-white focus:outline-none focus:border-brand-cyan transition-colors resize-none"></textarea>
         </div>
-
         <button type="submit" class="w-full py-3.5 rounded-lg font-bold text-xs uppercase tracking-wider text-brand-obsidian bg-brand-cyan hover:bg-white transition-all shadow-[0_0_20px_rgba(0,242,254,0.3)] mt-2">
           Send Request
         </button>
       </form>
 
-      <div id="form-success" class="hidden text-center py-8">
-        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center mb-3">
+      <div id="form-success" class="hidden text-center py-6 space-y-4">
+        <div class="w-12 h-12 rounded-full bg-emerald-500/20 text-emerald-400 mx-auto flex items-center justify-center">
           <i data-lucide="check" class="w-6 h-6"></i>
         </div>
-        <h4 class="text-white font-bold text-lg">Inquiry Prepared</h4>
-        <p class="text-xs text-slate-400 mt-2 max-w-sm mx-auto">Your email draft has been generated. Lee Powell and team will review your asset dossier within 24 hours.</p>
+        <div>
+          <h4 class="text-white font-bold text-lg">Inquiry Ready</h4>
+          <p class="text-xs text-slate-400 mt-1 max-w-sm mx-auto">
+            Your email client should open automatically. If it didn't open, copy the details below and email <span class="text-brand-cyan font-mono">lee@cyancollective.ai</span> directly.
+          </p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-2 justify-center pt-2">
+          <button type="button" id="copy-inquiry-btn" onclick="copyLastInquiry()" class="px-4 py-2.5 rounded-lg font-mono text-xs text-brand-obsidian bg-brand-cyan hover:bg-white font-bold transition-all">
+            Copy Inquiry Details
+          </button>
+          <button type="button" onclick="closeModal()" class="px-4 py-2.5 rounded-lg font-mono text-xs text-slate-300 border border-slate-700 hover:border-slate-500 transition-all">
+            Close Window
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -971,7 +947,9 @@
       if (e.key === 'Escape') closeModal();
     });
 
-    // 4. Modal Form Submission -> Sends mail to lee@cyancollective.ai
+    // 4. Modal Form Submission -> Sends mail & stores fallback copy text
+    let lastFormattedInquiry = '';
+
     function handleFormSubmit(e) {
       e.preventDefault();
       const name = document.getElementById('audit-name').value;
@@ -979,6 +957,15 @@
       const email = document.getElementById('audit-email').value;
       const model = document.getElementById('modal-model-select').value;
       const notes = document.getElementById('audit-notes').value;
+
+      lastFormattedInquiry = 
+        `To: lee@cyancollective.ai\n` +
+        `Subject: Value Creation Audit Inquiry — ${firm}\n\n` +
+        `Executive Name: ${name}\n` +
+        `Firm / Portfolio Asset: ${firm}\n` +
+        `Direct Email: ${email}\n` +
+        `Selected Model: ${model}\n\n` +
+        `Context & Objectives:\n${notes}`;
 
       const subject = encodeURIComponent(`Value Creation Audit Inquiry — ${firm}`);
       const body = encodeURIComponent(
@@ -994,10 +981,13 @@
       document.getElementById('audit-form').classList.add('hidden');
       document.getElementById('form-success').classList.remove('hidden');
       if (window.lucide) lucide.createIcons();
+    }
 
-      setTimeout(() => {
-        closeModal();
-      }, 4000);
+    function copyLastInquiry() {
+      if (!lastFormattedInquiry || !navigator.clipboard) return;
+      navigator.clipboard.writeText(lastFormattedInquiry).then(() => {
+        showToast('Full inquiry copied to clipboard!');
+      });
     }
 
     // 5. Direct Partner Inquiry Button -> Copies email & triggers mail client
@@ -1005,13 +995,11 @@
       e.preventDefault();
       const email = 'lee@cyancollective.ai';
       const subject = encodeURIComponent('Confidential PE Value Creation Inquiry');
-      
       if (navigator.clipboard) {
         navigator.clipboard.writeText(email).then(() => {
           showToast(`Copied ${email} to clipboard!`);
         });
       }
-
       setTimeout(() => {
         window.location.href = `mailto:${email}?subject=${subject}`;
       }, 250);
@@ -1025,7 +1013,6 @@
       msg.textContent = message;
       toast.classList.remove('translate-y-20', 'opacity-0');
       toast.classList.add('translate-y-0', 'opacity-100');
-
       setTimeout(() => {
         toast.classList.remove('translate-y-0', 'opacity-100');
         toast.classList.add('translate-y-20', 'opacity-0');
@@ -1036,26 +1023,29 @@
     document.addEventListener("DOMContentLoaded", () => {
       if (window.lucide) lucide.createIcons();
     });
-    
-    // 8. Mobile Menu
-    function toggleMobileMenu() {
+
+    // 8. Mobile Menu (with resize reset)
+    function toggleMobileMenu(forceClose = false) {
       const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('menu-icon');
       if (!menu) return;
 
       const isHidden = menu.classList.contains('hidden');
-      
-      if (isHidden) {
-        menu.classList.remove('hidden');
-      } else {
-        menu.classList.add('hidden');
-      }
+      const shouldHide = forceClose ? true : !isHidden;
 
-      const icon = document.getElementById('menu-icon');
-      if (icon) {
-        icon.setAttribute('data-lucide', isHidden ? 'x' : 'menu');
-        if (window.lucide) lucide.createIcons();
+      if (shouldHide) {
+        menu.classList.add('hidden');
+        if (icon) icon.setAttribute('data-lucide', 'menu');
+      } else {
+        menu.classList.remove('hidden');
+        if (icon) icon.setAttribute('data-lucide', 'x');
       }
+      if (window.lucide) lucide.createIcons();
     }
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 768) toggleMobileMenu(true);
+    });
   </script>
 </body>
 </html>
